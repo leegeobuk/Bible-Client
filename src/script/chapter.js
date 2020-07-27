@@ -15,7 +15,6 @@ class Chapter extends React.Component {
   getScriptByChapter = async () => {
     const {version, bookId, chapterId} = this.state
     const script = await axios.get(baseUrl + `${version}/${bookId}/${chapterId}`)
-    console.log(script.data.passages)
 
     this.setState(current => ({
       version: current.version,
