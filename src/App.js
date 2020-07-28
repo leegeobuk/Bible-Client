@@ -1,6 +1,5 @@
 import React from 'react';
-import Chapter from './script/chapter';
-import Book from './script/book';
+import Book from './components/book';
 import axios from 'axios';
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
@@ -23,7 +22,6 @@ class App extends React.Component {
         {this.state.books.map((book, i) => {
           return <Book key={i} book={book} />
         })}
-        <Chapter />
       </div>
     )
   }
