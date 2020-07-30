@@ -1,8 +1,10 @@
 import React from 'react';
 import Home from "./routes/Home";
-import { HashRouter, Route, Switch, Link } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Script from './routes/Script';
 import axios from 'axios';
+import MainNav from './components/MainNav';
+import About from './routes/About';
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
 
@@ -22,13 +24,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <HashRouter>
-          <Link to="/">
-            Home
-          </Link>
+          <MainNav />
           <Switch>
             <Route exact path={"/"}>
               <Home version={version} books={books} />
             </Route>
+            <Route exact path={"/about"} component={About} />
             {books.map((book, i) => {
               return <Route path={`/${version}/${book.book_name}/:chapter`} component={Script} key={i} />
             })}
