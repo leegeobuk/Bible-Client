@@ -7,7 +7,7 @@ function Book({ version, book}) {
       pathname: `/${version}/${book.book_name}/1`,
       state: {
         version: version,
-        bookId: book.book_id,
+        book: book,
         chapter: "1"
       }
     }}>
