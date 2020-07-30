@@ -7,9 +7,11 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <h1>주께로 향하는 삶</h1>
-        {books.map((book, i) => {
-          return <Book key={i} version={version} book={book} />
-        })}
+        <div>
+          {books.map((book, i) => {
+            return <Book key={i} version={version} book={book} />
+          })}
+        </div>
       </div>
     )
   }
