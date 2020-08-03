@@ -10,7 +10,7 @@ class Script extends React.Component {
     passages: []
   }
 
-  getScriptByChapter = async () => {
+  getScript = async () => {
     const {version, book, chapter} = this.props.location.state
     const script = await axios.get(baseUrl + `${version}/${book.book_id}/${chapter}`)
 
@@ -19,21 +19,37 @@ class Script extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getScriptByChapter();
-  }
-  
-  componentDidUpdate() {
-    this.getScriptByChapter();
+  updateScript = async () => {
+    const {version, book, chapter} = this.props.location.state
+    const script = await axios.get(baseUrl + `${version}/${book.book_id}/${chapter}`)
+    const prevPassages = this.state.passages;
+
+    if (JSON.stringify(prevPassages) !== JSON.stringify(script.data.passages)) {
+      this.setState({
+        passages: script.data.passages
+      })
+    }
   }
 
-  componentWillUnmount() {
-    
+  componentDidMount() {
+    if (this.props.location.state === undefined) {
+      this.props.history.push("/");
+      return;
+    }
+    this.getScript();
+  }
+
+  componentDidUpdate() {
+    this.updateScript();
   }
 
   render() {
     const {passages} = this.state
-    const {version, book, chapter} = this.props.location.state
+    if (!this.props.location.state) {
+      return null;
+    }
+
+    const {version, book, chapter} = this.props.location.state;
     return (
       <div>
         <h1>
