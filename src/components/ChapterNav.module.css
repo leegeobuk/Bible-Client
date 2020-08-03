@@ -1,0 +1,15 @@
+.Nav {
+  display: inline-block;
+  
+  
+  margin: 5px 12px;
+}
+
+.active, .Nav:hover {
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+.active { 
+  font-size: 1.5rem;
+}
