@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import Verse from "../components/Verse";
-import ChapterNav from "../components/ChapterNav";
+import Verse from "../components/bible/Verse";
+import ChapterNav from "../components/bible/ChapterNav";
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
 
-class Script extends React.Component {
+class Script extends Component {
   state = {
     passages: []
   }

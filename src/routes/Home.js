@@ -1,7 +1,7 @@
-import React from 'react';
-import Book from '../components/Book';
+import React, { Component } from 'react';
+import Book from '../components/bible/Book';
 
-class Home extends React.Component {
+class Home extends Component {
   render() {
     const {version, books} = this.props
     return (

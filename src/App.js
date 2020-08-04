@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Home from "./routes/Home";
 import { HashRouter, Route } from 'react-router-dom';
 import Script from './routes/Script';
@@ -9,7 +9,7 @@ import classes from './App.module.css';
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
 
-class App extends React.Component {
+class App extends Component {
   state = {
     version: "KRV",
     books: []
