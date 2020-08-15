@@ -1,5 +1,7 @@
-.App {
+body {
+  background-color: aliceblue;
   font-family: Helvetica, sans-serif, Arial;
+  margin: 60px 0px 0px 0px;
 }
 
 a {
