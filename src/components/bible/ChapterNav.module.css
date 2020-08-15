@@ -1,11 +1,14 @@
 .Nav {
+  text-align: left;
+  width: 95%;
+}
+
+.link {
   display: inline-block;
-  
-  
   margin: 5px 12px;
 }
 
-.active, .Nav:hover {
+.active, .link:hover {
   color: dodgerblue;
   font-weight: bold;
 }

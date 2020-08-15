@@ -1,11 +1,16 @@
 import React from "react";
+import classes from "./Verse.module.css";
 
 function Verse({passage}) {
   return (
-    <div>
-      {`${passage.reference} ${passage.text}`}
-      <br />
-    </div>
+    <tr>
+      <td className={classes.reference}>
+        {passage.reference}
+      </td>
+      <td className={classes.verse}>
+        {passage.text}
+      </td>
+    </tr>
   )
 }
 

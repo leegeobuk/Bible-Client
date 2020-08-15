@@ -56,11 +56,13 @@ class Script extends Component {
           {`${book.book_name} ${chapter}장`}
         </h1>
         <ChapterNav version={version} book={book} />
-        <div>
-          {passages.map((passage, i) => {
-            return <Verse key={i} passage={passage} />
-          })}
-        </div>
+        <table>
+          <tbody>
+            {passages.map((passage, i) => {
+              return <Verse key={i} passage={passage} />
+            })}
+          </tbody>
+        </table>
       </div>
     )
   }
