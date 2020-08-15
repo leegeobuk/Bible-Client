@@ -1,0 +1,15 @@
+.LoginForm {
+  text-align: center;
+}
+
+.email_label{
+  display: block;
+}
+
+.email_input {
+  width: 300px;
+  height: 30px;
+  border-radius: 0.2rem;
+  border-width: 1px;
+  border-color: dodgerblue;
+}
