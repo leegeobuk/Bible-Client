@@ -1,0 +1,13 @@
+.Confirm{
+  margin-top: 2rem;
+}
+
+.confirm_btn{
+  box-sizing: border-box;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  width: 4rem;
+  height: 2rem;
+  cursor: pointer;
+}
