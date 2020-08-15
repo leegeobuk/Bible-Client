@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classes from "./Book.module.css";
 
 function Book({ version, book}) {
   return (
-    <Link to={{
+    <Link className={classes.book} to={{
       pathname: `/${version}/${book.book_name}/1`,
       state: {
         version: version,

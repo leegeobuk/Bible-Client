@@ -1,0 +1,10 @@
+.book {
+  color: mediumslateblue;
+  display: inline-block;
+  margin: 5px 10px;
+  font-size: 1rem;
+}
+
+.book:hover {
+  color: dodgerblue;
+}
