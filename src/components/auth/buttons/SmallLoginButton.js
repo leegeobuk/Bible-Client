@@ -3,16 +3,12 @@ import { Link } from "react-router-dom";
 import classes from "./SmallLoginButton.module.css";
 
 class SmallLoginButton extends Component {
-  state = {
-    isLoggedIn: false
-  }
-  
   render() {
-    const {isLoggedIn} = this.state;
+    const {loggedIn} = this.props;
     return (
-      <Link to="/login">
+      <Link to="login">
         <button className={classes.login_button} type="button">
-          {isLoggedIn ? "로그아웃" : "로그인"}
+          {loggedIn ? "로그아웃" : "로그인"}
         </button>
       </Link>
     );
