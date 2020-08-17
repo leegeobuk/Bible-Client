@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./About.module.css";
 
-function About() {
+const about = () => {
   return (
     <div className={classes.About}>
       이 웹사이트를 주님께 받칩니다.<br/>
@@ -28,4 +28,4 @@ function About() {
   )
 }
 
-export default About
+export default about
