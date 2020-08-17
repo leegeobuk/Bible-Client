@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LabeledInput from "./LabeledInput";
-import LoginButton from "../buttons/LoginButton";
+import SignupLoginButton from "../buttons/AuthButton";
 import axios from "axios";
 import SignupLink from "../SignupLink";
 import DivisionBar from "../DivisionBar";
@@ -33,7 +33,7 @@ class LoginForm extends Component {
         <form className={classes.auth} onSubmit={this.handleSubmit}>
           <LabeledInput label="이메일" onChange={this.handleEmailChange} />
           <LabeledInput label="비밀번호" onChange={this.handlePasswordChange} />
-          <LoginButton />
+          <SignupLoginButton value="로그인" />
         </form>
         <SignupLink />
         <DivisionBar />

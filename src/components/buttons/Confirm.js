@@ -5,7 +5,7 @@ class Confirm extends Component {
   render() {
     return (
       <div className={classes.Confirm}>
-        <button className={classes.confirm_btn} onClick={this.props.toggleDialog}>
+        <button className={classes.confirm_btn} onClick={this.props.toggle}>
           확인
         </button>
       </div>
