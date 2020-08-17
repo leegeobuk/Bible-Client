@@ -1,0 +1,17 @@
+.SignupForm {
+  margin: auto;
+  width: 300px;
+}
+
+.auth {
+  margin-bottom: 0.5rem;
+}
+
+.kakao_btn {
+  display: block;
+}
+
+.kakao_btn img {
+  width: 60px;
+  height: 60px;
+}
