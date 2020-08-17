@@ -6,6 +6,7 @@ import axios from 'axios';
 import MainNav from './components/nav/MainNav';
 import About from './routes/About';
 import Login from './routes/Login';
+import Signup from './routes/Signup';
 import classes from './App.module.css';
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
@@ -44,6 +45,7 @@ class App extends Component {
           </Route>
           <Route exact path={"/about"} component={About} />
           <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/signup"} component={Signup} />
           {books.map((book, i) => {
             return <Route path={`/${version}/${book.book_name}/:chapter`} component={Script} key={i} />
           })}
