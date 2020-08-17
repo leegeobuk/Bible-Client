@@ -1,0 +1,12 @@
+.SignupLink {
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #b2c0cc;
+  font-size: 12px;
+}
+
+.signup_btn {
+  color: dodgerblue;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
