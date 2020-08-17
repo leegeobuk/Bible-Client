@@ -5,7 +5,7 @@ import Script from './routes/Script';
 import axios from 'axios';
 import MainNav from './components/nav/MainNav';
 import About from './routes/About';
-import Auth from './routes/Auth';
+import Login from './routes/Login';
 import classes from './App.module.css';
 
 const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
@@ -30,7 +30,6 @@ class App extends Component {
       }))
     } catch (error) {
       console.log("error: " + error);
-      // return;
     }
   }
   
@@ -44,7 +43,7 @@ class App extends Component {
             <Home version={version} ot={ot} nt={nt} />
           </Route>
           <Route exact path={"/about"} component={About} />
-          <Route exact path={"/login"} component={Auth} />
+          <Route exact path={"/login"} component={Login} />
           {books.map((book, i) => {
             return <Route path={`/${version}/${book.book_name}/:chapter`} component={Script} key={i} />
           })}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "./LoginFail.module.css"
-import Confirm from "../button/Confirm";
+import Confirm from "../buttons/Confirm";
 
 class LoginFail extends Component {
   render() {

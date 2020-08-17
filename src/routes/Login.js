@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { API_URL, KAKAO_KEY, REDIRECT_LOGIN } from "../util/env";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import LoginForm from "../components/auth/LoginForm";
+import LoginForm from "../components/auth/forms/LoginForm";
 import LoginFail from "../components/modal/LoginFail";
-import classes from "./Auth.module.css";
 import Backdrop from "../components/modal/Backdrop";
+import classes from "./Login.module.css";
 
 const authBaseUrl = "https://kauth.kakao.com";
 const authUrl = `${authBaseUrl}/oauth/authorize?client_id=${KAKAO_KEY}&redirect_uri=${REDIRECT_LOGIN}&response_type=code`;
 const tokenUrl = `${API_URL}/login`;
-const loginImage = "/images/login_kakao.png";
 
 class Auth extends Component {
   state = {
@@ -55,16 +53,10 @@ class Auth extends Component {
   
   render() {
     return (
-      <div className={classes.Auth}>
+      <div className={classes.Login}>
         <Backdrop show={this.state.isLoginFailed} />
         <LoginFail show={this.state.isLoginFailed} toggleDialog={this.toggleLoginFailDialog} />
-        <LoginForm />
-        <a className={classes.kakao_btn} href={authUrl}>
-         <img src={loginImage} alt={"카카오 로그인"} />
-        </a>
-        <Link className={classes.signup_btn} to={"/signup"}>
-          회원가입
-        </Link>
+        <LoginForm url={authUrl} />
       </div>
     );
   }

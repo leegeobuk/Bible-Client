@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import LoginButton from "../auth/LoginButton";
+import SmallLoginButton from "../auth/buttons/SmallLoginButton";
 import classes from "./MainNav.module.css";
 
 class MainNav extends Component {
@@ -16,7 +16,7 @@ class MainNav extends Component {
           </Link>
         </div>
         <div className={classes.login}>
-          <LoginButton />
+          <SmallLoginButton />
         </div>
       </nav>
     )

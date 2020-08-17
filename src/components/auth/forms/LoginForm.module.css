@@ -1,0 +1,12 @@
+.LoginForm {
+  margin: auto;
+  width: 300px;
+}
+
+.auth {
+  margin-bottom: 0.5rem;
+}
+
+.kakao_btn {
+  display: block;
+}

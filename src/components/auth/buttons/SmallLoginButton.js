@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import classes from "./LoginButton.module.css";
+import classes from "./SmallLoginButton.module.css";
 
-class LoginButton extends Component {
+class SmallLoginButton extends Component {
   state = {
     isLoggedIn: false
   }
@@ -19,4 +19,4 @@ class LoginButton extends Component {
   }
 }
 
-export default LoginButton;
+export default SmallLoginButton;
