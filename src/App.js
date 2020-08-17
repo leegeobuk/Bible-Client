@@ -16,7 +16,8 @@ class App extends Component {
     version: "KRV",
     ot: [],
     nt: [],
-    books: []
+    books: [],
+    loggedIn: false
   }
 
   getBooks = async () => {
@@ -27,24 +28,35 @@ class App extends Component {
         version: current.version,
         ot: ot,
         nt: nt,
-        books: [...ot, ...nt]
+        books: [...ot, ...nt],
+        loggedIn: current.loggedIn
       }))
     } catch (error) {
       console.log("error: " + error);
     }
   }
   
+  markLoggedIn = () => {
+    this.setState(current => ({
+      version: current.version,
+      ot: current.ot,
+      nt: current.nt,
+      books: current.books,
+      loggedIn: true
+    }))
+  }
+  
   render() {
-    const {version, ot, nt, books} = this.state
+    const {version, ot, nt, books, loggedIn} = this.state
     return (
       <div className={classes.App}>
         <BrowserRouter>
-          <MainNav />
+          <MainNav loggedIn={loggedIn} />
           <Route exact path={"/"}>
             <Home version={version} ot={ot} nt={nt} />
           </Route>
           <Route exact path={"/about"} component={About} />
-          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/login"} render={props => (<Login location={props.location} markLoggedIn={this.markLoggedIn} {...props} />)} />
           <Route exact path={"/signup"} component={Signup} />
           {books.map((book, i) => {
             return <Route path={`/${version}/${book.book_name}/:chapter`} component={Script} key={i} />
