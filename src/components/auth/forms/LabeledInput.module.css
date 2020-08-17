@@ -1,0 +1,13 @@
+._label{
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+._input {
+  width: 298px;
+  height: 30px;
+  border-radius: 0.2rem;
+  border-width: 1px;
+  border-color: dodgerblue;
+  margin-bottom: 0.5rem;
+}
