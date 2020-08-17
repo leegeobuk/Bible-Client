@@ -1,0 +1,17 @@
+.DivisionBar {
+  text-align: center;
+  border-bottom: 1px solid #d7e2eb;
+  position: relative;
+  width: 50%;
+  left: 25%;
+  line-height: 0.6rem;
+  margin: 0 0 1.8rem 0;
+}
+
+.DivisionBar span {
+  background-color:aliceblue;
+  color: #b2c0cc;
+  font-size: 12px;
+  padding: 0 10px;
+  font-weight: bold;
+}
