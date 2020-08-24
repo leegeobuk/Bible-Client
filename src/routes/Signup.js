@@ -40,8 +40,8 @@ class Signup extends Component {
   createTokenRequest = (code) => {
     const grantType = "authorization_code";
     const req = {
-      grant_type: grantType,
-      redirect_uri: REDIRECT_SIGNUP,
+      grantType: grantType,
+      redirectUri: REDIRECT_SIGNUP,
       code: code
     };
     return req;
