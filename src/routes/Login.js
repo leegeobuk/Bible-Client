@@ -6,8 +6,8 @@ import AuthDialog from "../components/modal/AuthDialog";
 import Backdrop from "../components/modal/Backdrop";
 import classes from "./Login.module.css";
 
-const kakaoBaseUrl = "https://kauth.kakao.com";
-const kakaoAuthUrl = `${kakaoBaseUrl}/oauth/authorize?client_id=${KAKAO_KEY}&redirect_uri=${REDIRECT_LOGIN}&response_type=code`;
+const kakaoBaseUrl = "https://kauth.kakao.com/oauth/authorize";
+const kakaoAuthUrl = `${kakaoBaseUrl}?client_id=${KAKAO_KEY}&redirect_uri=${REDIRECT_LOGIN}&response_type=code`;
 const kakaoTokenUrl = `${API_URL}/login?type=kakao`;
 
 class Login extends Component {
@@ -23,10 +23,10 @@ class Login extends Component {
   
   login = async (code) => {
     const req = this.createTokenRequest(code);
-    await axios.post(kakaoTokenUrl, req)
+    await axios.post(kakaoTokenUrl, req) 
       .then(res => {
-        console.log(res.status);
-        this.toggleDialog("로그인 되었습니다", true);
+        console.log(res.data);
+        this.redirect(this.tokenize(res.data));
       })
       .catch(err => {
         if (err.response.status === 401) {
@@ -40,20 +40,29 @@ class Login extends Component {
   createTokenRequest = (code) => {
     const grantType = "authorization_code";
     const req = {
-      grant_type: grantType,
-      redirect_uri: REDIRECT_LOGIN,
+      grantType: grantType,
+      redirectUri: REDIRECT_LOGIN,
       code: code
     };
     return req;
   }
+  
+  tokenize = (data) => {
+    const date = new Date();
+    date.setSeconds(date.getSeconds() + data.expiresIn);
+    return {
+      accessToken: data.accessToken,
+      expiry: date
+    };
+  }
+  
+  redirect = (token) => {
+    this.props.setToken(token);
+    this.props.history.push("/");
+  }
 
   toggleDialog = (msg, isSigned = false) => {
     this.setState({dialogOn: !this.state.dialogOn, msg: msg, isSigned: isSigned});
-  }
-
-  redirect = () => {
-    this.props.markLoggedIn();
-    this.props.history.push("/");
   }
 
   componentDidMount() {
