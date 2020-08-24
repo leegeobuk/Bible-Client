@@ -4,11 +4,10 @@ import classes from "./SmallLoginButton.module.css";
 
 class SmallLoginButton extends Component {
   render() {
-    const {loggedIn} = this.props;
     return (
-      <Link to="login">
-        <button className={classes.login_button} type="button">
-          {loggedIn ? "로그아웃" : "로그인"}
+      <Link to="/login">
+        <button className={classes.login_btn} type="button">
+          로그인
         </button>
       </Link>
     );
