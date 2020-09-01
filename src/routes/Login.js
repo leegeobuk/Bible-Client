@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { API_URL, KAKAO_KEY, REDIRECT_LOGIN } from "../util/env";
 import axios from "axios";
 import LoginForm from "../components/auth/forms/LoginForm";
-import AuthDialog from "../components/modal/AuthDialog";
+import DialogPane from "../components/modal/DialogPane";
 import Backdrop from "../components/modal/Backdrop";
 import classes from "./Login.module.css";
 
@@ -23,10 +23,11 @@ class Login extends Component {
   
   login = async (code) => {
     const req = this.createTokenRequest(code);
-    await axios.post(kakaoTokenUrl, req) 
+    await axios.post(kakaoTokenUrl, req, {withCredentials: true}) 
       .then(res => {
+        console.log("login: ");
         console.log(res.data);
-        this.redirect(this.tokenize(res.data));
+        this.redirect(this.props.tokenize(res.data));
       })
       .catch(err => {
         if (err.response.status === 401) {
@@ -45,15 +46,6 @@ class Login extends Component {
       code: code
     };
     return req;
-  }
-  
-  tokenize = (data) => {
-    const date = new Date();
-    date.setSeconds(date.getSeconds() + data.expiresIn);
-    return {
-      accessToken: data.accessToken,
-      expiry: date
-    };
   }
   
   redirect = (token) => {
@@ -77,7 +69,7 @@ class Login extends Component {
     return (
       <div className={classes.Login}>
         <Backdrop show={dialogOn} />
-        <AuthDialog show={dialogOn} click={isSigned ? this.redirect : this.toggleDialog.bind(this, msg)} text={msg} />
+        <DialogPane show={dialogOn} click={isSigned ? this.redirect : this.toggleDialog.bind(this, msg)} text={msg} />
         <LoginForm url={kakaoAuthUrl} />
       </div>
     );

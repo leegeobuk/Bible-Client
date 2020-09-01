@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SignupForm from "../components/auth/forms/SignupForm";
 import { API_URL, KAKAO_KEY, REDIRECT_SIGNUP } from "../util/env";
 import Backdrop from "../components/modal/Backdrop";
-import AuthDialog from "../components/modal/AuthDialog";
+import DialogPane from "../components/modal/DialogPane";
 import axios from "axios";
 import classes from "./Signup.module.css";
 
@@ -67,7 +67,7 @@ class Signup extends Component {
     return (
       <div className={classes.Signup}>
         <Backdrop show={dialogOn} />
-        <AuthDialog show={dialogOn} click={isSigned ? this.redirect : this.toggleDialog.bind(this, msg)} text={msg} />
+        <DialogPane show={dialogOn} click={isSigned ? this.redirect : this.toggleDialog.bind(this, msg)} text={msg} />
         <SignupForm url={authUrl} />
       </div>
     );
