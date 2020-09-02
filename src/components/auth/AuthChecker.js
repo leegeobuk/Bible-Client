@@ -42,7 +42,7 @@ class AuthChecker extends Component {
   }
 
   render() {
-    return <MainNav loggedIn={this.props.loggedIn} />;
+    return <MainNav setToken={this.props.setToken} loggedIn={this.props.loggedIn} />;
   }
 }
 
