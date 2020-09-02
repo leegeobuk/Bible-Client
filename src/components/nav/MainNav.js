@@ -18,8 +18,7 @@ class MainNav extends Component {
           </Link>
         </div>
         <div className={classes.login}>
-          {}
-          {loggedIn ? <LogoutButton /> : <SmallLoginButton />}
+          {loggedIn ? <LogoutButton setToken={this.props.setToken} /> : <SmallLoginButton />}
         </div>
       </nav>
     )
