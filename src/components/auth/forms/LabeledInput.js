@@ -8,7 +8,7 @@ class LabeledInput extends Component {
         <label className={classes._label}>
           {this.props.label}
         </label>
-        <input className={classes._input} type="text" placeholder={this.props.label} />
+        <input className={classes._input} type={this.props.type} placeholder={this.props.label} onChange={this.props.handle} />
       </Fragment>
     );
   }
