@@ -68,7 +68,7 @@ class Signup extends Component {
       <div className={classes.Signup}>
         <Backdrop show={dialogOn} />
         <DialogPane show={dialogOn} click={isSigned ? this.redirect : this.toggleDialog.bind(this, msg)} text={msg} />
-        <SignupForm url={authUrl} />
+        <SignupForm url={authUrl} toggle={this.toggleDialog} />
       </div>
     );
   }
