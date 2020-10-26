@@ -3,12 +3,13 @@ import classes from "./LabeledInput.module.css";
 
 class LabeledInput extends Component {
   render() {
+    const {type, label, handle, field} = this.props;
     return (
       <Fragment>
         <label className={classes._label}>
           {this.props.label}
         </label>
-        <input className={classes._input} type={this.props.type} placeholder={this.props.label} onChange={this.props.handle} />
+        <input className={classes._input} type={type} placeholder={label} onChange={e => handle(e, field)} />
       </Fragment>
     );
   }
