@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import MainNav from "../nav/MainNav";
 import { API_URL } from "../../util/env";
+import cookies from "js-cookie";
 import axios from "axios";
 
-const kakaoRefreshTokenUrl = `${API_URL}/refreshtoken?type=kakao`;
+const refreshTokenUrl = `${API_URL}/refreshtoken?type=`;
 
 class AuthChecker extends Component {
   shouldRefreshToken = (token) => {
@@ -13,19 +14,23 @@ class AuthChecker extends Component {
   }
 
   onSilentRefresh = async () => {
-    await axios.post(kakaoRefreshTokenUrl, {grantType: "refresh_token"}, {withCredentials: true})
-    .then(res => {
-      console.log(res.data);
-      this.props.setToken(this.props.tokenize(res.data));
-    })
-    .catch(err => {
-      if (err.response.status === 401) {
-        console.log(err.response.data);
-      }
-      else if (err.response.status === 500) {
-        console.log(err.response.data);
-      }
-    });
+    const type = cookies.get('login_type');
+    console.log(type);
+    if (type) {
+      await axios.post(refreshTokenUrl + type, {grantType: "refresh_token"}, {withCredentials: true})
+      .then(res => {
+        console.log(res.data);
+        this.props.setToken(this.props.tokenize(res.data));
+      })
+      .catch(err => {
+        if (err.response.status === 401) {
+          console.log(err.response.data);
+        }
+        else if (err.response.status === 500) {
+          console.log(err.response.data);
+        }
+      });
+    }
   }
   
   componentDidMount() {

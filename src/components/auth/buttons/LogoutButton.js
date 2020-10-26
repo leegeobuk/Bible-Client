@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { KAKAO_KEY, REDIRECT_HOME, API_URL } from "../../../util/env";
 import axios from "axios";
+import cookies from "js-cookie";
 import classes from "./LogoutButton.module.css";
 
 const kakaoBaseUrl = "https://kauth.kakao.com/oauth/logout";
@@ -12,6 +13,7 @@ class LogoutButton extends Component {
     await axios.get(kakaoLogoutApiUrl, {withCredentials: true}) 
       .then(() => {
         this.props.setToken(null);
+        cookies.remove('login_type');
         window.location.href = kakaoLogoutUrl;
       })
       .catch(err => {

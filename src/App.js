@@ -15,7 +15,7 @@ class App extends Component {
     nt: [],
     books: [],
     loggedIn: false,
-    token: null
+    token: null,
   }
 
   setBooks = (books) => {
@@ -50,7 +50,8 @@ class App extends Component {
     date.setSeconds(date.getSeconds() + data.expiresIn);
     return {
       accessToken: data.accessToken,
-      expiry: date
+      expiry: date,
+      type: data.type
     };
   }
   
