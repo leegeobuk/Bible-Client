@@ -23,6 +23,7 @@ class LoginForm extends Component {
   
   handleChange = (event, field) => {
     const val = event.target.value;
+    
     const state = {
       name: this.state.name,
       email: this.state.email,
