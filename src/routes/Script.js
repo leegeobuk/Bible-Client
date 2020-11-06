@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import Verse from "../components/bible/Verse";
 import ChapterNav from "../components/bible/ChapterNav";
+import { API_URL } from "../util/env";
 
-const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
+const baseUrl = `${API_URL}/`;
 
 class Script extends Component {
   state = {
