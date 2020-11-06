@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import classes from "./Home.module.css";
 import BookLinks from '../components/bible/BookLinks';
+import { API_URL } from "../util/env";
+import classes from "./Home.module.css";
 
-const baseUrl = "https://6vmwgwqpq0.execute-api.ap-northeast-2.amazonaws.com/alpha/"
+const homeUrl = `${API_URL}/`;
 
 class Home extends Component {
   loadBooks = async () => {
     try {
-      const books = await axios.get(baseUrl);
+      const books = await axios.get(homeUrl);
       this.props.setBooks(books);
     } catch (error) {
       console.log("error: " + error);
