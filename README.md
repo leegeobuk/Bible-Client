@@ -1,2 +1,2 @@
 # Bible-Client
-Client for Bible service
+Client for Biblennium service
