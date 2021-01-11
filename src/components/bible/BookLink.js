@@ -2,17 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./BookLink.module.css";
 
-const BookLink = ({ version, book}) => {
+const BookLink = ({ version, bookLink }) => {
   return (
     <Link className={classes.book} to={{
-      pathname: `/${version}/${book.book_name}/1`,
+      pathname: "/script",
+      search: `?b=${bookLink.abbreviation}&c=1`,
       state: {
         version: version,
-        book: book,
+        bookLink: bookLink,
         chapter: "1"
       }
     }}>
-      {book.book_name}
+      {bookLink.fullName}
       <br />
     </Link>
   );

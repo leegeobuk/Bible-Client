@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Verse.module.css";
 
-function Verse({passage}) {
+function Verse({verse}) {
   return (
     <tr>
       <td className={classes.reference}>
-        {passage.reference}
+        {verse.verse}
       </td>
       <td className={classes.verse}>
-        {passage.text}
+        {verse.text}
       </td>
     </tr>
   )
