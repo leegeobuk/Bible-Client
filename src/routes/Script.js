@@ -8,26 +8,28 @@ const baseUrl = `${API_URL}/`;
 
 class Script extends Component {
   state = {
-    passages: []
+    verseList: []
   }
 
   getScript = async () => {
-    const {version, book, chapter} = this.props.location.state
-    const script = await axios.get(baseUrl + `${version}/${book.book_id}/${chapter}`)
+    const {version, bookLink, chapter} = this.props.location.state;
+    const scriptUrl = baseUrl + `script?b=${bookLink.abbreviation}&c=${chapter}`;
+    const script = await axios.get(scriptUrl)
 
     this.setState({
-      passages: script.data.passages
+      verseList: script.data.verseList
     })
   }
 
   updateScript = async () => {
-    const {version, book, chapter} = this.props.location.state
-    const script = await axios.get(baseUrl + `${version}/${book.book_id}/${chapter}`)
-    const prevPassages = this.state.passages;
+    const {version, bookLink, chapter} = this.props.location.state;
+    const scriptUrl = baseUrl + `script?b=${bookLink.abbreviation}&c=${chapter}`;
+    const script = await axios.get(scriptUrl);
+    const prevPassages = this.state.verseList;
 
-    if (JSON.stringify(prevPassages) !== JSON.stringify(script.data.passages)) {
+    if (JSON.stringify(prevPassages) !== JSON.stringify(script.data.verseList)) {
       this.setState({
-        passages: script.data.passages
+        verseList: script.data.verseList
       })
     }
   }
@@ -45,22 +47,22 @@ class Script extends Component {
   }
 
   render() {
-    const {passages} = this.state
+    const {verseList} = this.state
     if (!this.props.location.state) {
       return null;
     }
 
-    const {version, book, chapter} = this.props.location.state;
+    const {version, bookLink, chapter} = this.props.location.state;
     return (
       <div>
         <h1>
-          {`${book.book_name} ${chapter}장`}
+          {`${bookLink.fullName} ${chapter}장`}
         </h1>
-        <ChapterNav version={version} book={book} />
+        <ChapterNav version={version} bookLink={bookLink} />
         <table>
           <tbody>
-            {passages.map((passage, i) => {
-              return <Verse key={i} passage={passage} />
+            {verseList.map((verse, i) => {
+              return <Verse key={i} verse={verse} />
             })}
           </tbody>
         </table>

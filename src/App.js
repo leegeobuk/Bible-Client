@@ -10,10 +10,9 @@ import classes from './App.module.css';
 
 class App extends Component {
   state = {
-    version: "KRV",
+    version: "NKRV",
     ot: [],
     nt: [],
-    books: [],
     loggedIn: false,
     token: null,
   }
@@ -24,7 +23,6 @@ class App extends Component {
       version: current.version,
       ot: ot,
       nt: nt,
-      books: [...ot, ...nt],
       loggedIn: current.loggedIn,
       token: current.token
     }));
@@ -39,7 +37,6 @@ class App extends Component {
       version: current.version,
       ot: current.ot,
       nt: current.nt,
-      books: current.books,
       loggedIn: !this.isTokenEmpty(token),
       token: token
     }));
@@ -56,7 +53,7 @@ class App extends Component {
   }
   
   render() {
-    const {version, ot, nt, books, loggedIn, token} = this.state
+    const {version, ot, nt, loggedIn, token} = this.state
     return (
       <div className={classes.App}>
         <AuthChecker token={token} loggedIn={loggedIn} setToken={this.setToken} tokenize={this.tokenize} />
@@ -76,9 +73,7 @@ class App extends Component {
           )}
         />
         <Route exact path={"/signup"} component={Signup} />
-        {books.map((book, i) => {
-          return <Route key={i} path={`/${version}/${book.book_name}/:chapter`} component={Script} />
-        })}
+        <Route exact path={`/script`} component={Script} />
       </div>
     );
   }
