@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Home from "./routes/Home";
 import { Route } from 'react-router-dom';
-import About from './routes/About';
 import Login from './routes/Login';
 import Signup from './routes/Signup';
 import AuthChecker from './components/auth/AuthChecker';
@@ -60,8 +59,7 @@ class App extends Component {
         <Route exact path={"/"}>
           <Home version={version} ot={ot} nt={nt} setBooks={this.setBooks} />
         </Route>
-        <Route exact path={"/about"} component={About} />
-        <Route 
+        {/* <Route 
           exact path={"/login"} 
           render={props => (
             <Login 
@@ -72,7 +70,7 @@ class App extends Component {
             />
           )}
         />
-        <Route exact path={"/signup"} component={Signup} />
+        <Route exact path={"/signup"} component={Signup} /> */}
         <Route exact path={`/script`} component={Script} />
       </div>
     );

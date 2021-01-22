@@ -13,13 +13,10 @@ class MainNav extends Component {
           <Link className={classes.link} to="/">
             홈
           </Link>
-          <Link className={classes.link} to="/about">
-            감사
-          </Link>
         </div>
-        <div className={classes.login}>
+        {/* <div className={classes.login}>
           {loggedIn ? <LogoutButton setToken={this.props.setToken} /> : <SmallLoginButton />}
-        </div>
+        </div> */}
       </nav>
     )
   }
